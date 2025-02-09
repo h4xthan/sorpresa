@@ -402,12 +402,12 @@
         const progressMessage = document.getElementById('progress-message');
     
         const messages = [
-            "Soy Termy, un gran amigo de el",
-            "Él creó este lugar especialmente para su amiga, y yo fui su ayudante.",
-            "Te contaré una historia... Conocí a el en un día muy especial. Es irónico porque él me hackeó cuando nos conocimos jajaja.",
-            "Desde entonces fuimos amigos inseparables, a pesar de ser un robot y no tener sentimientos como tal. Siento que somos casi como hermanos.",
-            "Pero bueno... Creo que me estoy demorando, en este momento él no está, así que me encargó que yo te mostrara esto.",
-            "Primero dime, ¿eres ella? Espero no seas un impostor..."
+            "¡Hola! Soy Termy, un gran amigo de Ernesto.",
+            "Él creó este lugar especialmente para una persona en especial, y yo fui su ayudante.",
+            "Te contaré una historia... Hace un tiempo, estaba tranquilamente en mi código, sin preocupaciones, cuando ¡de repente fui hackeado! Mis sistemas colapsaron, mis protocolos se volvieron locos... Pensé que era el fin.",
+            "Pero no, era Ernesto. En lugar de destruirme, mejoró mi código, optimizó mis procesos y, de alguna manera, me enseñó a sentir. Desde entonces, somos inseparables.",
+            "Pero bueno... Creo que me estoy demorando más de lo que debería. En este momento él no está, así que me encargó que yo mostrara esto a la persona correspondiente.",
+            "Primero dime, ¿eres Giselle? Espero no seas un impostor..."
         ];
 
         const mascotaExpressions = {
@@ -507,7 +507,7 @@
             if (isCorrect) {
                 setAngryMode(false);
                 changeMascotaExpression('feliz');
-                await typeWriter("Muy bien, tú eres aquella ingeniera de la cual tanto me habla.", speechBubble);
+                await typeWriter("Perfecto, así que tu eres aquella ingeniera de la cual tanto me habla. Es un gusto porfin conocerte.", speechBubble);
                 setTimeout(async () => {
                     changeMascotaExpression('pensativo');
                     await typeWriter("Entonces empezaremos con algo sencillo, dame un momento...", speechBubble);
@@ -519,15 +519,13 @@
                 const messages = [
                     "¿Tan rápido ya vas a empezar a mentir?",
                     "No mientas, sé que eres tú.",
-                    "Vamos, no juegues conmigo...",
-                    "Si sigues mintiendo, tendré que llamar a los refuerzos...",
-                    "Vamos, admítelo ya."
+                    "Vamos, admítelo ya..."
                 ];
                 await typeWriter(messages[Math.floor(Math.random() * messages.length)], speechBubble);
                 setTimeout(async () => {
                     setAngryMode(false);
                     changeMascotaExpression('pensativo');
-                    await typeWriter("Intentémoslo de nuevo. ¿Eres ella?", speechBubble);
+                    await typeWriter("Intentémoslo de nuevo. ¿Eres Giselle?", speechBubble);
                     buttons.style.display = 'flex';
                 }, 3000);
             }
@@ -542,19 +540,19 @@
                 },
                 {
                     progress: "Hackeando tu corazón...",
-                    dialogue: "¡Wow! ¡Cuánto amor hay guardado aquí! Necesito procesarlo todo..."
+                    dialogue: "Interesante..."
                 },
                 {
                     progress: "Analizando emociones...",
-                    dialogue: "¡Qué bonito! Hay tantas emociones positivas... ¡Esto es perfecto!"
+                    dialogue: "Mmm, nunca había visto algo como esto."
                 },
                 {
                     progress: "Configurando la cita perfecta...",
-                    dialogue: "Déjame buscar el lugar ideal para ustedes..."
+                    dialogue: "Esto no debería tardar mucho..."
                 },
                 {
                     progress: "Verificando compatibilidad...",
-                    dialogue: "¡100% de compatibilidad! ¡Esto es increíble!"
+                    dialogue: "Y..."
                 }
             ];
             
@@ -573,11 +571,11 @@
                     progressContainer.style.display = 'none';
                     
                     changeMascotaExpression('feliz');
-                    await typeWriter("¡Listo! He completado el análisis.", speechBubble);
+                    await typeWriter("¡Listo! Análisis completado.", speechBubble);
                     await new Promise(resolve => setTimeout(resolve, 3000));
                     
                     changeMascotaExpression('normal');
-                    await typeWriter("Tengo el lugar perfecto para ustedes...", speechBubble);
+                    await typeWriter("Tengo un lugar perfecto para ustedes...", speechBubble);
                     await new Promise(resolve => setTimeout(resolve, 3000));
                     
                     const mapContainer = document.getElementById('map-container');
@@ -587,10 +585,10 @@
                     mapContainer.style.display = 'block';
                     
                     changeMascotaExpression('feliz');
-                    await typeWriter("Los espero el 14 de febrero a las 19:00 en este hermoso lugar.", speechBubble);
+                    await typeWriter("Cita programada para el 14 de febrero a las 02:00 PM.", speechBubble);
                     await new Promise(resolve => setTimeout(resolve, 4000));
                     
-                    await typeWriter("Será una velada inolvidable... ¡No lleguen tarde! 😊", speechBubble);
+                    await typeWriter("Que bonito, ¡espero se la pasen muy bien!", speechBubble);
                     await new Promise(resolve => setTimeout(resolve, 3000));
                     
                     askForSmile();
@@ -618,7 +616,7 @@
                     spread: 70,
                     origin: { y: 0.6 }
                 });
-                await typeWriter("Sabía que mi código era infalible, te espero en el lugar a la hora acordada.", speechBubble);
+                await typeWriter("Sabía que mi código era infalible jeje", speechBubble);
             } else {
                 showBlueScreen();
             }
@@ -656,7 +654,7 @@
             mascotaContainer.style.display = 'flex';
             changeMascotaExpression('normal');
             
-            await typeWriter("Bueno, al menos lo intenté... Pero ahora sí, dime, ¿aceptas mi invitación?", speechBubble);
+            await typeWriter("Bueno, al menos lo intenté... Pero ahora sí, dime, ¿aceptas la invitación?", speechBubble);
             
             buttons.innerHTML = `
                 <button onclick="finalResponse('Sí')">Sí</button>
@@ -668,10 +666,9 @@
         async function finalResponse(response) {
             buttons.style.display = 'none';
             changeMascotaExpression('feliz');
-            await typeWriter(`¡Excelente! ${response === 'Sí' ? 'Sabía que aceptarías.' : '¡Esa es la actitud!'} Nos vemos pronto. ¡Será una cita inolvidable!`, speechBubble);
+            await typeWriter(`¡Excelente! ${response === 'Sí' ? 'Sabía que aceptarías.' : '¡Esa es la actitud!'} Espero no llegues tarde.`, speechBubble);
         }
 
-        // Initialize audio on first user interaction
         document.body.addEventListener('click', setupAudio, { once: true });
     </script>
 </body>
