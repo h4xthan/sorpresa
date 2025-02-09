@@ -243,16 +243,7 @@
             }
         }
 
-        #confetti {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
+        /* Blue Screen Styles */
         #blue-screen {
             display: none;
             position: fixed;
@@ -260,28 +251,89 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #0078D7;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 100px 20px;
-            box-sizing: border-box;
             z-index: 9999;
+            font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+            background: #3973aa;
+            color: #fefeff;
+        }
+
+        #blue-screen #page {
+            display: table;
+            height: 100%;
+            margin: 0 auto;
+            margin-top: -10px;
+            width: 70%;
+            font-size: 1.9vw;
+        }
+
+        #blue-screen #container {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        #blue-screen h1,
+        #blue-screen h2,
+        #blue-screen h3,
+        #blue-screen h4,
+        #blue-screen h5 {
+            font-weight: normal;
+            padding: 0;
+            margin: 25px 0;
+            margin-top: 0;
+            font-weight: 300;
         }
 
         #blue-screen h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        #blue-screen p {
-            font-size: 18px;
+            font-size: 6.5em;
             margin-bottom: 10px;
         }
 
-        #countdown {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 20px;
+        #blue-screen h2 {
+            font-size: 1.5em;
+        }
+
+        #blue-screen h4 {
+            font-size: 1.4em;
+            line-height: 1.5em;
+        }
+
+        #blue-screen h5 {
+            line-height: 1.1em;
+            font-size: 1.3em;
+        }
+
+        #blue-screen #details {
+            display: flex;
+            flex-flow: row;
+            flex-wrap: nowrap;
+            padding-top: 10px;
+        }
+
+        #blue-screen #qr {
+            flex: 0 1 auto;
+        }
+
+        #blue-screen #image {
+            background: white;
+            padding: 5px;
+            line-height: 0;
+        }
+
+        #blue-screen #image img {
+            width: 9.8em;
+            height: 9.8em;
+        }
+
+        #blue-screen #stopcode {
+            padding-left: 10px;
+            flex: 1 1 auto;
+        }
+
+        @media (min-width: 840px) {
+            #blue-screen #page {
+                font-size: 140%;
+                width: 800px;
+            }
         }
     </style>
 </head>
@@ -318,13 +370,25 @@
         </iframe>
     </div>
 
-    <canvas id="confetti"></canvas>
-
     <div id="blue-screen">
-        <h1>:(</h1>
-        <p>ERROR 0x000: Sonrisa no encontrada. Termy entró en pánico.</p>
-        <p>Recolectando datos emocionales... Intentando reparar...</p>
-        <div id="countdown"></div>
+        <div id="page">
+            <div id="container">
+                <h1>:(</h1>
+                <h2>Se ha detectado una respuesta inesperada en el sistema. El proceso *salida_san_valentin.exe* ha encontrado un error no recuperable.</h2>
+                <h2><span id="percentage">0</span>% complete</h2>
+                <div id="details">
+                    <div id="qr">
+                        <div id="image">
+                            <img src="http://xontab.com/experiments/Javascript/BSOD/qr.png" alt="QR Code" />
+                        </div>
+                    </div>
+                    <div id="stopcode">
+                        <h4>Para más información o si quiere RECONSIDERAR la respuesta, visite:<br/></h4>
+                        <h5>Al consultar con el soporte técnico (o sea, yo), debe brindar este código de error:<br/>0x000NO00</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
@@ -338,12 +402,12 @@
         const progressMessage = document.getElementById('progress-message');
     
         const messages = [
-            "Soy Termy, un gran amigo de Ernesto",
+            "Soy Termy, un gran amigo de el",
             "Él creó este lugar especialmente para su amiga, y yo fui su ayudante.",
-            "Te contaré una historia... Hace un tiempo, estaba tranquilamente en mi código, sin preocupaciones, cuando ¡de repente fui hackeado! Mis sistemas colapsaron, mis protocolos se volvieron locos... Pensé que era el fin.",
-            "Pero no, era él. En lugar de destruirme, mejoró mi código, optimizó mis procesos y, de alguna manera, me enseñó a sentir. Desde entonces, somos inseparables.",
-            "Pero bueno... Creo que me estoy demorando, en este momento él no está, así que me encargó que yo mostrara esto a la persona correspondiente.",
-            "Primero dime, ¿eres Giselle? Espero no seas un impostor..."
+            "Te contaré una historia... Conocí a el en un día muy especial. Es irónico porque él me hackeó cuando nos conocimos jajaja.",
+            "Desde entonces fuimos amigos inseparables, a pesar de ser un robot y no tener sentimientos como tal. Siento que somos casi como hermanos.",
+            "Pero bueno... Creo que me estoy demorando, en este momento él no está, así que me encargó que yo te mostrara esto.",
+            "Primero dime, ¿eres ella? Espero no seas un impostor..."
         ];
 
         const mascotaExpressions = {
@@ -463,7 +527,7 @@
                 setTimeout(async () => {
                     setAngryMode(false);
                     changeMascotaExpression('pensativo');
-                    await typeWriter("Intentémoslo de nuevo. ¿Eres Giselle?", speechBubble);
+                    await typeWriter("Intentémoslo de nuevo. ¿Eres ella?", speechBubble);
                     buttons.style.display = 'flex';
                 }, 3000);
             }
@@ -478,19 +542,19 @@
                 },
                 {
                     progress: "Hackeando tu corazón...",
-                    dialogue: "¡Wow! Necesito procesarlo todo esto..."
+                    dialogue: "¡Wow! ¡Cuánto amor hay guardado aquí! Necesito procesarlo todo..."
                 },
                 {
                     progress: "Analizando emociones...",
-                    dialogue: "Esto es increíble..."
+                    dialogue: "¡Qué bonito! Hay tantas emociones positivas... ¡Esto es perfecto!"
                 },
                 {
                     progress: "Configurando la cita perfecta...",
-                    dialogue: "Esto no debería tardar mucho."
+                    dialogue: "Déjame buscar el lugar ideal para ustedes..."
                 },
                 {
                     progress: "Verificando compatibilidad...",
-                    dialogue: "¡Perfecto!"
+                    dialogue: "¡100% de compatibilidad! ¡Esto es increíble!"
                 }
             ];
             
@@ -519,14 +583,14 @@
                     const mapContainer = document.getElementById('map-container');
                     const mapFrame = document.getElementById('map-frame');
                     const location = "Plaza+Mayor+Madrid";
-                    mapFrame.src = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.3864013432144!2d-3.7074373846554584!3d40.41560397936441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42287e19e23f35%3A0xcf8c26f39b8c6ce9!2sPlaza%20Mayor!5e0!3m2!1sen!2ses!4v1613745219705!5m2!1sen!2ses`;
+                    mapFrame.src = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d284.52889799269275!2d-106.4314475921705!3d23.28397799318672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8698ad3ffd5d14af%3A0x4368b21830b98cbd!2sPunto%20de%20quiebre!5e1!3m2!1ses!2smx!4v1739056481716!5m2!1ses!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"`;
                     mapContainer.style.display = 'block';
                     
                     changeMascotaExpression('feliz');
-                    await typeWriter("Ernesto te espera en este lugar a las 02:00 PM.", speechBubble);
+                    await typeWriter("Los espero el 14 de febrero a las 19:00 en este hermoso lugar.", speechBubble);
                     await new Promise(resolve => setTimeout(resolve, 4000));
                     
-                    await typeWriter("Espero que no faltes :D", speechBubble);
+                    await typeWriter("Será una velada inolvidable... ¡No lleguen tarde! 😊", speechBubble);
                     await new Promise(resolve => setTimeout(resolve, 3000));
                     
                     askForSmile();
@@ -554,31 +618,44 @@
                     spread: 70,
                     origin: { y: 0.6 }
                 });
-                await typeWriter("Sabía que mi código era infalible, espero te haya gustado jeje", speechBubble);
-                await new Promise(resolve => setTimeout(resolve, 3000));
-                await typeWriter("Por favor, envíale a mi amigo una captura que llegaste hasta aquí si es que aceptas salir con el ese día.", speechBubble);
+                await typeWriter("Sabía que mi código era infalible, te espero en el lugar a la hora acordada.", speechBubble);
             } else {
-                window.location.href = "porquedijistequeno.html";
+                showBlueScreen();
             }
         }
 
-        async function restartTermy() {
-            document.body.innerHTML = `
-                <div class="el"></div>
-                <div class="container">
-                    <div class="mascota-container" id="mascota-container">
-                        <div class="speech-bubble" id="speech-bubble" aria-live="polite"></div>
-                        <div class="mascota" id="mascota" role="img" aria-label="Mascota Termy"></div>
-                    </div>
-                    <div class="buttons" id="buttons"></div>
-                </div>
-            `;
+        function showBlueScreen() {
+            const blueScreen = document.getElementById('blue-screen');
+            blueScreen.style.display = 'block';
             
+            var percentage = 0;
+            var percentageElement = document.getElementById("percentage");
+
+            function process() {
+                percentage += parseInt(Math.random() * 10);
+                if (percentage > 100) {
+                    percentage = 100;
+                    setTimeout(() => {
+                        blueScreen.style.display = 'none';
+                        restartTermy();
+                    }, 1000);
+                    return;
+                }
+                percentageElement.innerText = percentage;
+                setTimeout(process, Math.random() * (1000 - 500) + 500);
+            }
+
+            process();
+        }
+
+        async function restartTermy() {
+            const mascotaContainer = document.getElementById('mascota-container');
             const speechBubble = document.getElementById('speech-bubble');
-            const mascota = document.getElementById('mascota');
             const buttons = document.getElementById('buttons');
             
+            mascotaContainer.style.display = 'flex';
             changeMascotaExpression('normal');
+            
             await typeWriter("Bueno, al menos lo intenté... Pero ahora sí, dime, ¿aceptas mi invitación?", speechBubble);
             
             buttons.innerHTML = `
